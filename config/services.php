@@ -53,6 +53,12 @@ return [
         'redirect' => 'http://localhost:8000/login/github/callback',
     ],
 
+    'linkedin' => [
+        'client_id' => '77ofqb7anc674c',
+        'client_secret' => 'aIlTbWlEhxtymhay',
+        'redirect' => 'http://127.0.0.1:8000/callback/linkedin',
+    ], 
+
     'google' => [ 
                 'client_id' => env ( 'G+_CLIENT_ID' ),
                 'client_secret' => env ( 'G+_CLIENT_SECRET' ),
@@ -60,3 +66,4 @@ return [
         ],
 
 ];
+

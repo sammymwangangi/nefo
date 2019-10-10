@@ -63,7 +63,10 @@
                     </form>
                 </div>
                 <div class="card-footer bg-transparent text-center">
-                     login with <a href="{{url('login')}}" class="float-right" title="Github"><i class="fab fa-github fa-2x"></i></a>  <a href="{{url('/auth/redirect/twitter')}}" class="float-right" title="Twitter"><i class="fab fa-twitter fa-2x"></i></a>          
+                     login with 
+                     <a href="{{url('/auth/redirect/github')}}" class="float-right" title="Github"><i class="fab fa-github fa-2x"></i></a>  
+                     <a href="{{url('/auth/redirect/twitter')}}" class="float-right" title="Twitter"><i class="fab fa-twitter fa-2x"></i></a>  
+                     <a href="{{url('/auth/redirect/linkedin')}}" class="float-right" title="Twitter"><i class="fab fa-linkedin fa-2x"></i></a>          
                 </div>
                 </div>
             </div>

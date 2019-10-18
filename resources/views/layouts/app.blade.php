@@ -12,6 +12,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('../dist/feather.min.js') }}" defer></script>
 
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
@@ -26,34 +27,9 @@
     
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.1.0/font-awesome-animation.min.css">
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">-->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/usm/popper.min.js"></script>
-<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
-    <style type="text/css">
-        body {
-            background-color: #EBEEF2;
-            font-size: 14px;
-        }
-        .jumbotron {
-            color: #15e84d;
-            /*background-image: url("../img/nexforum.png");*/
-            /*background-size: cover;*/
-            /*z-index: -2;*/
-            /*opacity: 0.1;*/
-            /*background-color: #343a40;*/
-            text-shadow: #343a40 2px 2px;
-        }
-
-        .display-4 {
-            font-weight: bold;
-            text-shadow: 1px 1px 4px;
-
-        }
-        
-        
-
-    </style>
 
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
@@ -68,7 +44,7 @@
     </script>
 
 </head>
-<body>
+<body class="bg-gray-100">
     <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -80,7 +56,7 @@
 
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-light navbar-laravel fixed-top top-nav">
-            <div class="container-fluid">
+            <div class="container mx-auto px-4">
                 <a class="navbar-brand" href="{{ url('/') }}">
 
                    <h4 style="color:#59c669"><strong>NexForum</strong><i class="fas fa-comments mr-lg-4 faa-parent animated-hover faa-fast faa-pulse fa-1x" style="color: #59c669;"></i></h4>
@@ -93,6 +69,10 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                    <form class="form-inline">
+                      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
                         <!-- Authentication Links -->
                         @guest
                             <li><a class="nav-link" href="{{ route('login') }}"><strong>{{ __('Login') }}</strong></a></li>
@@ -105,6 +85,8 @@
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                  <a class="dropdown-item" href="{{ url('/profile/editProfile/'.Auth::user()->id )}}"><i class="fas fa-user"></i> Edit Profile</a>
+                                  <a class="dropdown-item" href="{{ url('/profile/passwordChange') }}"><i class="fas fa-user-shield"></i> Manage Password</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -118,20 +100,16 @@
                             </li>
                         @endguest
                     </ul>
-                    <form class="form-inline">
-                      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>
                 </div>
             </div>
         </nav>
         
         <div class="jumbotron jumbotron-fluid text-center bg-dark">
-            <div class="container-fluid">
+            <div class="container mx-auto px-4">
               <h2 class="display-4" style="margin-top: 5rem;">Connect with NexForum</h2>
               <p>&#8220;A web application where developers interact,to ask questions,update others on upcoming technologies and solve problems together.Both for newbies and advanced developers. &#8221;</p>
               <hr>
-            <div class="container">
+            <div class="container mx-auto">
                 <div class="row">
                     <div class="col-12">
                        <ul class="nav justify-content-center">
@@ -188,12 +166,12 @@
         @endif
         
         <br>
-        <div class="container-fluid">
+        <div class="container mx-auto">
             <div class="row">
                 <div class="col-md-3">
                                        
-                        <a href="{{url('/forum')}}" class="form-control btn btn-success"><i class="fas fa-home fa-2x"></i><b>HOME</b></a>
-                         <br><br>
+                    <a href="{{url('/forum')}}" class="form-control btn btn-success"><i class="fas fa-home fa-2x"></i><b>HOME</b></a>
+                     <br><br>
                         
                     <a href="{{route('discussion.create')}}" class="form-control btn btn-success"><b>Create A Discussion</b></a>
                     <br><br>
@@ -240,7 +218,10 @@
                       <ul class="list-group list-group-flush">
                         @foreach($channels as $channel)
                         <li class="list-group-item">
-                            <a href="{{route('channel', ['slug' => $channel->slug])}}" style="color:#59c669;"><b>{{$channel->title}}</b></a>
+                            <a href="{{route('channel', ['slug' => $channel->slug])}}" style="color:#59c669;"><b>
+                              @include('layouts/channel-list')
+                              {{$channel->title}}</b>
+                            </a>
                             <span class="float-right badge badge-pill badge-success">{{$channel->discussions->count()}} </span>
                         </li>
                         @endforeach
@@ -275,7 +256,7 @@
 
         <!-- Social Icons -->
         <div class="bg-faded">
-            <div class="container-fluid">
+            <div class="container mx-auto px-4">
                 <div class="row py-4">
                     <div class="col-md-6 col-lg-7">
                         <h4 class="mb-0">Get connected with us on social networks!</h4>
@@ -292,7 +273,7 @@
         <!-- Social Icons -->
 
         <!-- Footer Links -->
-        <div class="container pt-5 pb-2">
+        <div class="container mx-auto px-4 pt-5 pb-2">
             <div class="row">
 
                 <div class="col-md-3 col-lg-4 col-xl-3">
@@ -320,9 +301,9 @@
         <hr class="bg-white mx-4 mt-2 mb-1">
 
         <!-- Copyright-->
-        <div class="container-fluid">
+        <div class="container mx-auto px-4">
             <p class="text-center m-0 py-1">
-                © 2018 Copyright <a href="https://nextechdevelopers.com/">NexTech Developers</a>
+                © 2020 Copyright <a href="https://nextechdevelopers.com/">NexTech Developers</a>
             </p>
         </div>
         <!-- Copyright -->
@@ -350,13 +331,6 @@
    
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 
-    <!-- Begin emoji-picker JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/emoji-picker/1.1.5/js/config.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/emoji-picker/1.1.5/js/util.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/emoji-picker/1.1.5/js/jquery.emojiarea.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/emoji-picker/1.1.5/js/emoji-picker.min.js"></script>
-    <!-- End emoji-picker JavaScript -->
-
     <script>
       $(function() {
         // Initializes and creates emoji set from sprite sheet
@@ -370,6 +344,9 @@
         // It can be called as many times as necessary; previously converted input fields will not be converted again
         window.emojiPicker.discover();
       });
+    </script>
+    <script>
+      feather.replace()
     </script>
 </body>
 </html>

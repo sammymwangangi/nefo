@@ -8,7 +8,7 @@
                         <div class="col-md-9">
                             <h5 class="text-dark">
                             @if($d->user->avatar)
-                            <img src="{{asset ('$d->user->avatar') }}" class="rounded-circle mr-3" alt="" width="50px" height="50px">
+                            <img src="{{asset ('images/users/'.$d->user->avatar) }}" class="rounded-circle mr-3" alt="" width="50px" height="50px">
                             @else
                             <img src="{{asset ('img/user.png')}}" class="rounded-circle mr-3" alt="" width="50px" height="50px">
                             @endif
@@ -25,11 +25,11 @@
                             
                             @if($d->hasBestAnswer())
         
-                                <span class="btn btn-success btn-sm disabled float-right">CLOSED</span>
+                                <span class="badge badge-success rounded-circle float-right"><i class="far fa-check-circle fa-2x"></i></span>
         
                             @else
         
-                                <span class="btn btn-danger btn-sm disabled float-right">OPENED</span>
+                                <span class="badge badge-danger rounded-circle float-right"><i class="fas fa-question-circle fa-2x"></i></span>
         
                             @endif
                         </div>
@@ -49,6 +49,8 @@
             </div>
             <hr>
 
+            {{-- BEST ANSWER --}}
+
             @if($best_answer)
                 @if(Auth::id() == $d->user->id)
                <div class="card shadow-lg p-3 mb-5 bg-white border-0 rounded" >
@@ -56,7 +58,7 @@
                 <div class="card-header bg-white text-dark font-weight-bold">
                     <h4>Best Answer</h4>
                     @if($d->user->avatar)
-                    <img src="{{asset ('$d->user->avatar') }}" class="rounded-circle mr-3" alt="" width="50px" height="50px">
+                    <img src="{{asset ('images/users/'.$d->user->avatar) }}" class="rounded-circle mr-3" alt="" width="50px" height="50px">
                     @else
                     <img src="{{asset ('img/user.png')}}" class="rounded-circle mr-3" alt="" width="50px" height="50px">
                     @endif
@@ -76,17 +78,15 @@
                 @endif
             @endif
 
+            {{-- REPLIES --}}
+
             <div class="container"><h2> <small>Replies</small></h2></div>
             @foreach($d->replies as $r)
             
             <div class="card shadow-lg border-0 mb-5 bg-white rounded">
                 <ul class="list-unstyled">
 			  	<li class="media my-4">
-				    @if($d->user->avatar)
-                    <img src="{{asset ('$d->user->avatar') }}" class="rounded-circle ml-3 mr-3" alt="" style="width: 2rem; height: 2rem">
-                    @else
-                    <img src="{{asset ('img/user.png')}}" class="rounded-circle ml-3 mr-3" alt="" style="width: 2rem; height: 2rem">
-                    @endif
+                    <img src="{{asset ('images/users/'.$r->user->avatar) }}" class="rounded-circle ml-3 mr-3" alt="" style="width: 2rem; height: 2rem">
 				    <div class="media-body">
 				      {{$r->user->name}} <span class="badge badge-light rounded-circle mr-3">{{$r->user->points}}</span>
 				      {!!Markdown::convertToHtml($r->content)!!}

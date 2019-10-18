@@ -2,10 +2,13 @@
 namespace App;
 use Auth;
 use App\Channel;
+use Laravelista\Comments\Commentable;
 use Illuminate\Database\Eloquent\Model;
 
 class Discussion extends Model
 {
+    use Commentable;
+
     protected $fillable = ['title','content','user_id','channel_id','slug'];
     public function channel(){
     	return $this->belongsTo(Channel::class);

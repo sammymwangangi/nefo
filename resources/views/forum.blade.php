@@ -2,54 +2,45 @@
 
 @section('content')
 
-            @if(count($discussions) > 0)
-            @foreach($discussions as $d)
-            <div class="card shadow-lg p-3 mb-5 bg-white border-0 rounded">
+    @if(count($discussions) > 0)
+    @foreach($discussions as $d)
 
-                <div class="card-header bg-white text-dark font-weight-bold">
-                    <div class="row">
-                        <div class="col-md-9">
-                            <h5 class="text-dark">
-                            @if($d->user->avatar)
-                            <img src="{{ $d->user->avatar }}" class="rounded-circle mr-3" alt="" width="50px" height="50px">
-                            @else
-                            <img src="img/user.png" class="rounded-circle mr-3" alt="" width="50px" height="50px">
-                            @endif
-                            {{$d->user->name}} <span class="badge badge-light rounded-circle mr-3">{{$d->user->points}}</span> 
-                            <small><i class="fas fa-clock fa-1.7x"></i> {{$d->created_at->diffForHumans()}} &nbsp;|&nbsp; {{$d->created_at->format(' H:i')}}</small>
-                        </h5> 
-                        </div>
-                        <div class="col-md-3">             
-                            @if($d->hasBestAnswer())
-        
-                                <span class="btn btn-success btn-sm disabled float-right">CLOSED</span>
-        
-                            @else
-        
-                                <span class="btn btn-danger btn-sm disabled float-right">OPENED</span>
-        
-                            @endif
-                        </div>
-                    </div>
+    <div class="max-w-sm w-full lg:max-w-full lg:flex shadow sm:shadow-md md:shadow-md lg:shadow-md xl:shadow-md rounded mb-5">
+      {{-- <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('/img/card-left.jpg')" title="Woman holding a mug">
+      </div> --}}
+      <div class="rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+        <div class="mb-8">
+            
+            <p class="text-sm text-white flex items-center mb-3">
+                @if($d->hasBestAnswer())
+                <span class="flex rounded-full bg-teal-500 uppercase px-2 py-1 text-xs font-bold mr-3">unsolved</span>
+            
+                @else
+                <span class="flex rounded-full bg-red-500 uppercase px-2 py-1 text-xs font-bold mr-3">unsolved</span>
+                @endif
 
-                </div>
+                @include('layouts.channel')
+                <i class="fas fa-comments text-green-400 pl-4 pr-2"></i>{{$d->replies->count()}}
+            </p>
 
-                <div class="card-body text-muted">
-                    <a href="{{route('discussion', ['slug' => $d->slug ])}}" style="text-decoration:none"><h4>{{$d->title}} </h4></a>
-                    <p class="lead"><strong>{!!str_limit(Markdown::convertToHtml($d->content), 170)!!}</strong></p>
-                </div>
-                <div class="card-footer border-0 bg-transparent">
-                    <a href="{{url('channel', ['slug' => $d->channel->slug])}}" class="btn btn-outline-success btn-sm mr-3"><i class="fas fa-heart"></i> {{$d->channel->title}}</a>
-                    Comments <span class="badge badge-success rounded-circle">{{$d->replies->count()}}</span>
-                </div>
-            </div>
-            @endforeach
+          <div class="text-gray-900 font-bold text-xl mb-2"><a class="text-blue-500 hover:text-blue-800" href="{{route('discussion', ['slug' => $d->slug ])}}">{{$d->title}}</a></div>
+          <p class="text-gray-500 text-base">{!!str_limit(Markdown::convertToHtml($d->content), 170)!!}</p>
+        </div>
+        <div class="flex items-center">
+          <img class="w-10 h-10 rounded-full mr-4" src="img/user.png" alt="Avatar">
+          <div class="text-sm">
+            <p class="text-gray-900 leading-none">{{$d->user->name}}</p>
+            <p class="text-gray-600">{{$d->created_at->diffForHumans()}} &nbsp;|&nbsp; {{$d->created_at->format(' H:i')}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    @endforeach
 
     <br>
     <div class="row justify-content-center">
-    
-           
-                {{$discussions->links()}}
+       
+        {{$discussions->links()}}
 
     </div>
     @else

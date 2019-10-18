@@ -17,6 +17,10 @@ Route::get('/', [
 	'as' => 'forum'
 
 ]);
+Route::get('welcome', function () {
+    return view('welcome');
+});
+
 Auth::routes();
 
 Route::get('/forum', [
@@ -127,5 +131,12 @@ Route::group(['middleware' => 'auth'], function(){
 
 	]);
 
+});
 
+//**************Profiles Routes ****************************
+Route::prefix('/profile')->middleware('auth')->group(function(){
+    Route::get('/passwordChange','ProfileController@changePassword');
+    Route::post('/passwordChange/{id}','ProfileController@postChangePassword');
+    Route::get('/editProfile/{id}','ProfileController@editprofile');
+    Route::post('/editprofile/{id}','ProfileController@posteditprofile');
 });

@@ -170,7 +170,7 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,
-        AdamWathan\EloquentOAuthL5\EloquentOAuthServiceProvider::class,
+        // AdamWathan\EloquentOAuthL5\EloquentOAuthServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
 
 
@@ -233,7 +233,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,
-        'SocialAuth' => AdamWathan\EloquentOAuth\Facades\OAuth::class,
+        // 'SocialAuth' => AdamWathan\EloquentOAuth\Facades\OAuth::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
 

@@ -3,6 +3,7 @@
 ## About NeFo
 
 NeFo is a forum web app with expressive, elegant functionality. We believe forums must be enjoyable and friendly to the users.
+It's an extended version of forum.nextechdevelopers.com with more features than the latter. It's a work in progress!
 
 
 

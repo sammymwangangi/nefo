@@ -33,3 +33,7 @@
 @if ($channel->title == 'Python')
     <i class="fab fa-python text-yellow-500 pr-1"></i>
 @endif
+
+@if ($channel->title == 'HTML5')
+    <i class="fab fa-html5 text-yellow-500 pr-1"></i>
+@endif

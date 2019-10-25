@@ -2,11 +2,14 @@
 
 namespace App;
 
-use App\Discussion;
 use Illuminate\Database\Eloquent\Model;
+use App\Discussion;
+use Laravel\Scout\Searchable;
 
 class Channel extends Model
 {
+	use Searchable;
+	
     protected $fillable = ['title', 'slug'];
 
     public function discussions(){

@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
     {
         App\User::create([
             'name' => 'admin',
-        	'avatar' => asset('/img/user.png'),
+        	'avatar' => 'user.png',
         	'password' => bcrypt('admin'),
         	'email' => 'admin@forum.ao',
           'provider' => 'NULL',
@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder
 
         App\User::create([
             'name' => 'Rixton Muel',
-            'avatar' => asset('/img/avatar.png'),
+            'avatar' => 'user.png',
             'password' => bcrypt('password'),
             'email' => 'rixton@nex.forum',
             'provider' => 'NULL',
@@ -33,7 +33,7 @@ class UsersTableSeeder extends Seeder
 
         App\User::create([
             'name' => 'Muel Sam',
-            'avatar' => asset('/img/avatar.png'),
+            'avatar' => 'user.png',
             'password' => bcrypt('12345678'),
             'email' => 'muel@nefo.com',
             'provider' => 'NULL',

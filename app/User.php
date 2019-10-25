@@ -4,11 +4,10 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Laravelista\Comments\Commenter;
 
 class User extends Authenticatable
 {
-    use Notifiable, Commenter;
+    use Notifiable;
     /**
      * The attributes that are mass assignable.
      *

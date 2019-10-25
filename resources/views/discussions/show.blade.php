@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-            <div class="card shadow-lg p-3 mb-5 bg-white border-0 rounded" >
+            {{-- <div class="card shadow-lg p-3 mb-5 bg-white border-0 rounded" >
 
                 <div class="card-header bg-white text-dark font-weight-bold">
                     <div class="row">
@@ -46,6 +46,51 @@
                 <div class="card-footer bg-transparent border-0">
                     <a href="{{url('channel', ['slug' => $d->channel->slug])}}" class="btn btn-outline-success btn-sm mr-3"><i class="fas fa-heart"></i> {{$d->channel->title}}</a>
                 </div>
+            </div> --}}
+            <div class="flex-1 max-w-sm w-full lg:max-w-full lg:flex shadow sm:shadow-md md:shadow-md lg:shadow-md xl:shadow-md rounded mb-5">
+              <div class="rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                <div class="mb-8">
+
+                    <div class="flex">
+                        <div class="w-1/5  h-12">
+                            <div class="flex">
+                              <div class="flex-none sm:flex-1 md:flex-1 lg:flex-1 xl:flex-1 text-center px-4">
+                                @include('layouts.channel')
+                              </div>
+
+                                @if(Auth::id() == $d->user->id)
+                                    @if(!$d->hasBestAnswer())
+                                        <a href="{{route('discussions.edit', ['slug' => $d->slug])}}" class="flex rounded-full bg-blue-500 uppercase px-2 py-1 text-xs font-bold mr-3"><i class="far fa-edit fa-2x"></i>Edit</a>
+                                    @endif                       
+                                @endif
+                            </div>
+                        </div>
+
+                      <div class="w-3/5  h-12"></div>
+                      <div class="w-1/5  h-12">
+                         <p class="text-sm text-white flex items-center mb-3">
+                            @if($d->hasBestAnswer())
+                            <span class="flex rounded-full bg-teal-500 uppercase px-2 py-1 text-xs font-bold mr-3">solved</span>
+                        
+                            @else
+                            <span class="flex rounded-full bg-red-500 uppercase px-2 py-1 text-xs font-bold mr-3">unsolved</span>
+                            @endif                   
+                        </p>
+                      </div>
+                    </div>          
+                    
+
+                  <div class="text-gray-900 font-bold text-xl mb-2"><a class="text-blue-500 hover:text-blue-800">{{$d->title}}</a></div>
+                  <p class="text-gray-500 text-base">{!!Markdown::convertToHtml($d->content)!!}</p>
+                </div>
+                <div class="flex items-center">
+                  <img class="w-10 h-10 rounded-full mr-4" src="{{asset ('images/users/'.$d->user->avatar) }}" alt="Avatar">
+                  <div class="text-sm">
+                    <p class="text-gray-900 leading-none">{{$d->user->name}}</p>
+                    <p class="text-gray-600">{{$d->created_at->diffForHumans()}} &nbsp;|&nbsp; {{$d->created_at->format(' H:i')}}</p>
+                  </div>
+                </div>
+              </div>
             </div>
             <hr>
 
@@ -57,11 +102,7 @@
 
                 <div class="card-header bg-white text-dark font-weight-bold">
                     <h4>Best Answer</h4>
-                    @if($d->user->avatar)
                     <img src="{{asset ('images/users/'.$d->user->avatar) }}" class="rounded-circle mr-3" alt="" width="50px" height="50px">
-                    @else
-                    <img src="{{asset ('img/user.png')}}" class="rounded-circle mr-3" alt="" width="50px" height="50px">
-                    @endif
                       
                   </i>{{$best_answer->user->name}} <span class="badge badge-light rounded-circle mr-3">{{$best_answer->user->points}}</span>
                       

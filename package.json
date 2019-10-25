@@ -19,6 +19,7 @@
         "popper.js": "^1.12",
         "sass": "^1.23.0",
         "sass-loader": "^8.0.0",
+        "tailwindcss-plugins": "^0.3.0",
         "vue": "^2.5.7",
         "vue-template-compiler": "^2.6.10"
     },

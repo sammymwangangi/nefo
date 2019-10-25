@@ -13,11 +13,11 @@ class ForumsController extends Controller
 {
     public function index()
     {
-    	//$discussions = Discussion::orderBy('created_at', 'desc')->paginate(9);
+    	//$discussions = Discussion::orderBy('created_at', 'desc')->paginate(7);
 
         switch (request('filter')) {
             case 'me':
-                $results = Discussion::where('user_id', Auth::id())->paginate(9);
+                $results = Discussion::where('user_id', Auth::id())->paginate(7);
                 break;
 
             case 'solved':
@@ -49,7 +49,7 @@ class ForumsController extends Controller
                 break;
             
             default:
-                $results = Discussion::orderBy('created_at', 'desc')->paginate(9);
+                $results = Discussion::orderBy('created_at', 'desc')->paginate(7);
                 break;
         }
 

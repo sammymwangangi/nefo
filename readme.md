@@ -1,5 +1,17 @@
 <p align="center"><img src="https://forum.nextechdevelopers.com/img/nexf.png"></p>
 
+## Installation
+
+git clone https://github.com/sammymwangangi/nefo
+cd nefo
+composer install
+cp .env.example .env
+php artisan key:generate
+npm install
+npm run dev
+php artisan migrate --seed
+php artisan serve
+
 ## About NeFo
 
 NeFo is a forum web app with expressive, elegant functionality. We believe forums must be enjoyable and friendly to the users.

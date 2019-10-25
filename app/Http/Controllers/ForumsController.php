@@ -17,7 +17,7 @@ class ForumsController extends Controller
 
         switch (request('filter')) {
             case 'me':
-                $results = Discussion::where('user_id', Auth::id())->paginate(7);
+                $results = Discussion::where('user_id', Auth::id())->paginate(5);
                 break;
 
             case 'solved':
@@ -49,7 +49,7 @@ class ForumsController extends Controller
                 break;
             
             default:
-                $results = Discussion::orderBy('created_at', 'desc')->paginate(7);
+                $results = Discussion::orderBy('created_at', 'desc')->paginate(5);
                 break;
         }
 
@@ -60,6 +60,6 @@ class ForumsController extends Controller
     {
     	$channel = Channel::where('slug', $slug)->first();
 
-    	return view('channel')->with('discussions', $channel->discussions);
+    	return view('channel')->with('discussions', $channel->discussions()->paginate(5));
     }
 }

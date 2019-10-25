@@ -1,52 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-            {{-- <div class="card shadow-lg p-3 mb-5 bg-white border-0 rounded" >
-
-                <div class="card-header bg-white text-dark font-weight-bold">
-                    <div class="row">
-                        <div class="col-md-9">
-                            <h5 class="text-dark">
-                            @if($d->user->avatar)
-                            <img src="{{asset ('images/users/'.$d->user->avatar) }}" class="rounded-circle mr-3" alt="" width="50px" height="50px">
-                            @else
-                            <img src="{{asset ('img/user.png')}}" class="rounded-circle mr-3" alt="" width="50px" height="50px">
-                            @endif
-                            {{$d->user->name}} <span class="badge badge-light rounded-circle mr-3">{{$d->user->points}}</span>
-                            <small><i class="fas fa-clock fa-1.7x"></i> {{$d->created_at->diffForHumans()}} &nbsp;|&nbsp; {{$d->created_at->format(' H:i A')}}</small>
-                        </h5> 
-                        </div>
-                        <div class="col-md-3">
-                            @if(Auth::id() == $d->user->id)
-                                @if(!$d->hasBestAnswer())
-                                    <a href="{{route('discussions.edit', ['slug' => $d->slug])}}" class="btn btn-info btn-sm"><i class="far fa-edit fa-2x"></i>Edit</a>
-                                @endif                       
-                            @endif  
-                            
-                            @if($d->hasBestAnswer())
-        
-                                <span class="badge badge-success rounded-circle float-right"><i class="far fa-check-circle fa-2x"></i></span>
-        
-                            @else
-        
-                                <span class="badge badge-danger rounded-circle float-right"><i class="fas fa-question-circle fa-2x"></i></span>
-        
-                            @endif
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    <h3> {{$d->title}}</h3>
-                    <hr>
-
-                    <p class="lead"><strong>{!!Markdown::convertToHtml($d->content)!!}</strong></p>
-
-                </div>
-                <div class="card-footer bg-transparent border-0">
-                    <a href="{{url('channel', ['slug' => $d->channel->slug])}}" class="btn btn-outline-success btn-sm mr-3"><i class="fas fa-heart"></i> {{$d->channel->title}}</a>
-                </div>
-            </div> --}}
             <div class="flex-1 max-w-sm w-full lg:max-w-full lg:flex shadow sm:shadow-md md:shadow-md lg:shadow-md xl:shadow-md rounded mb-5">
               <div class="rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                 <div class="mb-8">

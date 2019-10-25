@@ -48,13 +48,13 @@
 
         <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
           <nav>
-            <ul class="lg:flex items-center justify-between text-base text-white pt-4 lg:pt-0">
-              <li class="mr-6 mt-2">
-                <a href="{{ url('/') }}" class="block mt-4 lg:inline-block lg:mt-0">
+            <ul class="lg:flex items-center justify-between text-white pt-4 lg:pt-0">
+              <li class="mr-6 pt-2">
+                <a href="{{ url('/') }}" class="block mt-4 lg:inline-block font-semibold lg:mt-0 text-sm">
                   Home
                 </a>
               </li>
-              <li class="mr-32 mt-2">
+              <li class="mr-32 pt-2">
                 <a href="{{route('discussion.create')}}">
                   <button class="bg-transparent hover:bg-teal-500 text-gray-800 font-semibold text-xs hover:text-white hover:font-bold py-1 px-2 inline-flex items-center border border-green-400 hover:border-transparent rounded-full">
                     <span><i class="fas fa-plus fa-o.5x text-white"></i></span>
@@ -62,16 +62,16 @@
                   </button>
                 </a>
               </li>
-              <li class="mr-6 mt-2">
+              <li class="mr-6 pt-2">
                 <form>
-                  <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-1 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-400" id="inline-full-name" type="text" value="search...">
+                  <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-1 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-400" id="inline-full-name" type="text" placeholder="Search...">
                 </form>
               </li>
               @guest
               <li><a class="lg:p-4 py-3 px-0 block border-b-2 text-xs border-transparent hover:border-green-400" href="{{ route('login') }}">{{ __('Login') }}</a></li>
               <li><a class="lg:p-4 py-3 px-0 block border-b-2 text-xs border-transparent hover:border-green-400" href="{{ route('register') }}">{{ __('Sign Up') }}</a></li>
               @else
-              <li class="mr-2 mt-2">
+              <li class="mr-2 pt-2">
                 <a href="{{ url('/profile/editProfile/'.Auth::user()->id ) }}">
                   <button class="bg-transparent hover:bg-teal-500 text-gray-800 font-semibold text-xs hover:text-white hover:font-bold py-1 px-2 inline-flex items-center border border-green-400 hover:border-transparent rounded-full">
                     <span><i class="fas fa-edit fa-o.5x text-white"></i></span>
@@ -79,7 +79,7 @@
                   </button>
                 </a>
               </li>
-              <li class="mr-2 mt-2">
+              <li class="mr-2 pt-2">
                 <a href="{{ url('/profile/passwordChange') }}">
                   <button class="bg-transparent hover:bg-teal-500 text-gray-800 font-semibold text-xs hover:text-white hover:font-bold py-1 px-2 inline-flex items-center border border-green-400 hover:border-transparent rounded-full">
                     <span><i class="fas fa-lock fa-o.5x text-white"></i></span>
@@ -87,10 +87,10 @@
                   </button>
                 </a>
               </li>
-              <li class="mr-2 mt-2">
+              <li class="mr-2 pt-2">
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                   <button class="bg-transparent hover:bg-teal-500 text-gray-800 font-semibold text-xs hover:text-white hover:font-bold py-1 px-2 inline-flex items-center border border-green-400 hover:border-transparent rounded-full">
-                    <span><i class="fas fa-sign-out fa-o.5x text-white"></i></span>
+                    <span><i class="fas fa-sign-out-alt fa-o.5x text-white"></i></span>
                     <span class="ml-2 text-white">{{ __('Sign Out') }}</span>
                   </button>
                 </a>
@@ -98,9 +98,9 @@
                     {{ csrf_field() }}
                 </form>
               </li>
-              
-              <span class="text-gray-300 text-sm pr-4">{{ Auth::user()->name }}</span>
-              <img src="{{ asset('images/users/'.Auth::user()->avatar )}}" class="w-10 h-10 rounded-full" alt="">
+              <li>
+                <img src="{{ asset('images/users/'.Auth::user()->avatar )}}" class="w-10 h-10 rounded-full mx-auto md:mx-0 md:mr-6" alt="">
+              </li>
               @endguest
             </ul>
           </nav>
@@ -162,9 +162,10 @@
             {{-- PICK A CHANNEL --}}
             <h3 class="tracking-wide uppercase font-bold text-sm mb-2">OR PICK A CHANNEL</h3>
             <ul class="px-2 py-2">
+
              @foreach($channels as $channel)
               <li class="px-2 mb-2">
-                <a href="{{url('/forum?filter=me')}}" class="flex items-center font-semibold text-sm">
+                <a href="{{route('channel', ['slug' => $channel->slug])}}" class="flex items-center cursor-pointer hover:text-green-800 active:text-blue-500 font-semibold text-sm">
                     <span>@include('layouts/channel-list')</span>
                     <span class="ml-2">{{$channel->title}}</span>
                 </a>
@@ -224,7 +225,7 @@
       </div>
       <!-- Footer Links-->
 
-      <hr class="bg-white mx-4 mt-2 mb-1">
+      <hr class="bg-white mx-4 pt-2 mb-1">
 
       <!-- Copyright-->
       <div class="container mx-auto px-4">

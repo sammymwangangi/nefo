@@ -3,13 +3,21 @@
 ## Installation
 
 git clone https://github.com/sammymwangangi/nefo
+
 cd nefo
+
 composer install
+
 cp .env.example .env
+
 php artisan key:generate
+
 npm install
+
 npm run dev
+
 php artisan migrate --seed
+
 php artisan serve
 
 ## About NeFo

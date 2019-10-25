@@ -32,7 +32,7 @@
 
   {{-- NavBar --}}
 
-    <header class="lg:px-8 px-2 bg-green-700 p-6 flex flex-wrap items-center lg:py-4 shadow text-sm">
+    <header class="lg:px-8 px-2 bg-green-700 p-6 flex flex-wrap items-center lg:py-4 shadow text-sm sticky top-0">
         <div class="flex-1 flex justify-between items-center">
           <a class="text-green-400" href="{{ url('/') }}">
             <div class="flex items-center flex-shrink-0 text-white mr-6">
@@ -68,8 +68,22 @@
                 </form>
               </li>
               @guest
-              <li><a class="lg:p-4 py-3 px-0 block border-b-2 text-xs border-transparent hover:border-green-400" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-              <li><a class="lg:p-4 py-3 px-0 block border-b-2 text-xs border-transparent hover:border-green-400" href="{{ route('register') }}">{{ __('Sign Up') }}</a></li>
+              <li class="mr-2 pt-2">
+                <a href="{{ route('login') }}">
+                  <button class="bg-transparent hover:bg-teal-500 text-gray-800 font-semibold text-xs hover:text-white hover:font-bold py-1 px-2 inline-flex items-center border border-green-400 hover:border-transparent rounded-full">
+                    <span><i class="fas fa-sign-in-alt fa-o.5x text-white"></i></span>
+                    <span class="ml-2 text-white">{{ __('Login') }}</span>
+                  </button>
+                </a>
+              </li>
+              <li class="mr-2 pt-2">
+                <a href="{{ route('register') }}">
+                  <button class="bg-transparent hover:bg-teal-500 text-gray-800 font-semibold text-xs hover:text-white hover:font-bold py-1 px-2 inline-flex items-center border border-green-400 hover:border-transparent rounded-full">
+                    <span><i class="fas fa-user-plus fa-o.5x text-white"></i></span>
+                    <span class="ml-2 text-white">{{ __('Sign Up') }}</span>
+                  </button>
+                </a>
+              </li>
               @else
               <li class="mr-2 pt-2">
                 <a href="{{ url('/profile/editProfile/'.Auth::user()->id ) }}">

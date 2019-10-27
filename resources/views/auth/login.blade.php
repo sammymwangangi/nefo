@@ -6,8 +6,8 @@
             <div class="w-full max-w-sm">
                 <div class="flex flex-col break-words bg-white border border-2 rounded shadow-md">
 
-                    <div class="font-semibold bg-gray-200 text-gray-700 py-3 px-6 mb-0">
-                        {{ __('Login') }}
+                    <div class="font-semibold bg-green-400 text-white py-3 px-6 mb-0">
+                        {{ __('SIGN IN') }}
                     </div>
 
                     <form class="w-full p-6" method="POST" action="{{ route('login') }}">
@@ -50,8 +50,9 @@
                         </div>
 
                         <div class="flex flex-wrap items-center">
-                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-gray-100 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                                {{ __('Login') }}
+                            <button class="bg-green-400 hover:bg-teal-500 text-gray-800 font-semibold text-xs hover:text-white hover:font-bold py-1 px-2 inline-flex items-center border border-green-400 hover:border-transparent rounded-full">
+                                <span><i class="fas fa-sign-in-alt"></i></span>
+                                <span class="ml-2 text-white">{{ __('SIGN IN') }}</span>
                             </button>
 
                             @if (Route::has('password.request'))
@@ -61,9 +62,12 @@
                             @endif
 
                                 <p class="w-full text-xs text-center text-gray-700 mt-8 -mb-4">
-                                    {{ __("or Login with") }}
-                                    <a class="text-blue-500 hover:text-blue-700 no-underline" href="{{url('/auth/redirect/github')}}">
-                                        <i class="fab fa-github fa-2x"></i>
+                                    {{ __("Sign in with") }}
+                                    <a href="{{url('/auth/redirect/github')}}">
+                                        <button class="bg-green-400 hover:bg-teal-500 text-gray-800 font-semibold text-xs hover:text-white hover:font-bold py-1 px-2 inline-flex items-center border border-green-400 hover:border-transparent rounded-full">
+                                            <span><i class="fab fa-github"></i></span>
+                                            <span class="ml-2 text-white">GITHUB</span>
+                                        </button>
                                     </a>
                                 </p>
 

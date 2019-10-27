@@ -51,7 +51,10 @@
             <ul class="lg:flex items-center justify-between text-white pt-4 lg:pt-0">
               <li class="mr-6 pt-2">
                 <a href="{{ url('/') }}" class="block mt-4 lg:inline-block font-semibold lg:mt-0 text-sm">
-                  Home
+                  <button class="bg-transparent hover:bg-teal-500 text-gray-800 font-semibold text-xs hover:text-white hover:font-bold py-1 px-2 inline-flex items-center border border-green-400 hover:border-transparent rounded-full">
+                    <span><i class="fas fa-home fa-o.5x text-white"></i></span>
+                    <span class="ml-2 text-white">Home</span>
+                  </button>
                 </a>
               </li>
               <li class="mr-32 pt-2">
@@ -63,8 +66,8 @@
                 </a>
               </li>
               <li class="mr-6 pt-2">
-                <form>
-                  <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-1 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-400" id="inline-full-name" type="text" placeholder="Search...">
+                <form method="GET" action="{{ url('/') }}">
+                  <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-1 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-green-400" id="inline-full-name" type="text" name="search" placeholder="Search...">
                 </form>
               </li>
               @guest
@@ -260,5 +263,19 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
+    {{-- ALGOLIA SEARCH CONFIGURATION --}}
+    <script>
+      const {
+        searchBox,
+        hits
+      } = instantsearch.widgets;
+      search.addWidget(
+        searchBox({ container: "#searchbox" })
+      );
+      search.addWidget(
+        hits({ container: "#hits" })
+      );
+      search.start();
+    </script>
 </body>
 </html>

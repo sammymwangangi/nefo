@@ -17,6 +17,16 @@ Route::get('/', [
 	'as' => 'forum'
 
 ]);
+// Route::get('search', function() {
+//     $query = ''; // <-- Change the query for testing.
+
+//     $discussions = App\Discussion::search($query)->get();
+
+//     return $discussions;
+// });
+
+Route::get('/','SearchController@search');
+
 Route::get('welcome', function () {
     return view('welcome');
 });

@@ -10,6 +10,8 @@ use Laravel\Scout\Searchable;
 class Discussion extends Model
 {
 
+    use Searchable;
+
     protected $fillable = ['title','content','user_id','channel_id','slug'];
     public function channel(){
     	return $this->belongsTo(Channel::class);
@@ -60,5 +62,26 @@ class Discussion extends Model
         }
 
         return $result;
+    }
+
+    public function searchableAs()
+    {
+        return 'discussions_index';
+    }
+
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+
+        $data = [
+            'id' => $array['id'],
+            'slug' => $array['slug'],
+            'title' => $array['title'],
+            'content' => $array['content'],
+            'user_id' => $array['user_id'],
+            'channel_id' => $array['channel_id'],
+        ];
+        
+        return $data;
     }
 }

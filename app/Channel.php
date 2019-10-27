@@ -17,4 +17,9 @@ class Channel extends Model
     	return $this->hasMany(Discussion::class);
 
     }
+
+    public function searchableAs()
+    {
+        return 'channels_index';
+    }
 }

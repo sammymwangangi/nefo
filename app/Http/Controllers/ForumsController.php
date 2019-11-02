@@ -65,7 +65,7 @@ class ForumsController extends Controller
     	return view('channel')->with('discussions', $channel->discussions()->paginate(5));
     }
 
-    public function profile(Request $request, $name)
+    public function account(Request $request, $name)
     {
         $user = User::where('name', $name)->first();
         $discussions = Discussion::where("user_id", "=", $user->id)->paginate(5);

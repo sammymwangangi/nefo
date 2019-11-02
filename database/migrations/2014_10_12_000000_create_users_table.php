@@ -17,11 +17,13 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('avatar')->default('user.png');
+            $table->string('cover')->default('default.png');
             $table->boolean('admin')->default(0);
             $table->bigInteger('points')->default(50);
             $table->string('email')->unique()->nullable();
             $table->string('provider')->nullable();
             $table->string('provider_id')->nullable();
+            $table->text('about')->nullable();
             $table->string('password')->nullable();
             $table->rememberToken()->nullable();
             $table->timestamps();

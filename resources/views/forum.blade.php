@@ -33,7 +33,7 @@
             <img class="w-10 h-10 rounded-full mr-4" src="{{asset ('images/users/'.$d->user->avatar) }}" alt="Avatar">
             <div class="text-sm">
               {{-- <p class="text-gray-900 leading-none">{{$d->user->name}}</p> --}}
-              <a class="text-gray-900 leading-none" href="{{ url('profile',['name' => $d->user->name ?? '']) }}" target="_blank">{{$d->user->name}}</a>
+              <a class="text-gray-900 leading-none" href="{{ url('/',['name' => $d->user->name ?? '']) }}" target="_blank">{{$d->user->name}}</a>
               <p class="text-gray-600">{{$d->created_at->diffForHumans()}} &nbsp;|&nbsp; {{$d->created_at->format(' H:i')}}</p>
             </div>
           </div>

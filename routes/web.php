@@ -45,9 +45,9 @@ Route::get('channel/{slug}', [
 	'as' => 'channel'
 ]);
 
-Route::get('profile/{name}', [
-	'uses' => 'ForumsController@profile',
-	'as' => 'profile'
+Route::get('{name}', [
+	'uses' => 'ForumsController@account',
+	'as' => 'account'
 ]);
 // OAuth Routes
 
@@ -152,5 +152,6 @@ Route::prefix('/profile')->middleware('auth')->group(function(){
     Route::get('/passwordChange','ProfileController@changePassword');
     Route::post('/passwordChange/{id}','ProfileController@postChangePassword');
     Route::get('/editProfile/{id}','ProfileController@editprofile');
-    Route::post('/editprofile/{id}','ProfileController@posteditprofile');
+	Route::post('/editprofile/{id}','ProfileController@posteditprofile');
+	// Route::post('/editprofile/{id}', 'ProfileController@cover');
 });

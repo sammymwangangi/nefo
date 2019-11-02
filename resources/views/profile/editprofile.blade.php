@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="max-w-sm rounded overflow-hidden shadow-lg w-full md:flex text-xs m-auto">
+<div class="max-w-sm rounded overflow-hidden shadow-lg w-full md:flex text-xs m-auto mb-5">
     <div class="rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
         @if (session('status'))
             <div class="bg-red-100 border-t-4 mb-5 border-red-500 rounded-b text-red-900 px-4 py-3 shadow-md" role="alert">
@@ -19,7 +19,10 @@
 
             @csrf
 
-            <img class="h-20 w-20 rounded-full mx-auto" src="{{asset('images/users/'.Auth::user()->avatar)}}">
+            <img src="https://i.imgur.com/dYcYQ7E.png" class="w-full" />
+            <div class="flex justify-center -mt-8">
+                <img src="{{asset('images/users/'.Auth::user()->avatar)}}" class="rounded-full border-solid border-white border-2 -mt-3 h-20">		
+            </div>
             <div class="flex flex-wrap -mx-3 mb-6 mt-8">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                   <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="name">
@@ -37,10 +40,27 @@
             </div>
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full px-3">
+                  <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                    About Me
+                  </label>
+                  <textarea class="form-textarea appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="about" required rows="10" id="grid-password" type="text">{{$user->about}}</textarea>
+                  <p class="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
+                </div>
+            </div>
+            {{-- <div class="flex flex-wrap -mx-3 mb-6">
+                <div class="w-full px-3">
+                  <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="content">
+                    Cover Image
+                  </label>
+                  <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="cover" type="file" name="cover" value="{{ $user->cover }}">
+                </div>
+            </div> --}}
+            <div class="flex flex-wrap -mx-3 mb-6">
+                <div class="w-full px-3">
                   <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="content">
                     Profile Photo
                   </label>
-                  <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="email" type="file" name="avatar" value="{{ $user->avatar }}">
+                  <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="avatar" type="file" name="avatar" value="{{ $user->avatar }}">
                 </div>
             </div>
             <div class="flex mt-6">

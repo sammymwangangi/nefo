@@ -45,4 +45,21 @@ class ProfileController extends Controller
             return redirect()->back()->with('error', 'An error occurred while updating profile data, please try again!');
         }
     }
+    public function cover(Request $request)
+    {
+        //dd($request->all());
+        $user = Auth::user();
+        try {
+            $user->update(array_merge($request->all()));
+            if ($request->hasFile('cover')) {
+                $file = $request->file('cover');
+                $fileName = time() . '.' . $file->getClientOriginalExtension();
+                $request->cover->move('images/users/', $fileName);
+                $user->update(['cover' => $fileName]);
+            }
+            return redirect()->back()->with('success', 'Your profile has been updated successfully!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'An error occurred while updating profile data, please try again!');
+        }
+    }
 }

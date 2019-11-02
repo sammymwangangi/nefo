@@ -45,6 +45,10 @@ Route::get('channel/{slug}', [
 	'as' => 'channel'
 ]);
 
+Route::get('profile/{name}', [
+	'uses' => 'ForumsController@profile',
+	'as' => 'profile'
+]);
 // OAuth Routes
 
 Route::get('login/github', [

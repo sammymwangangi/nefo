@@ -12,6 +12,8 @@ class Discussion extends Model
 
     use Searchable;
 
+    protected $table = "discussions";
+
     protected $fillable = ['title','content','user_id','channel_id','slug'];
     public function channel(){
     	return $this->belongsTo(Channel::class);

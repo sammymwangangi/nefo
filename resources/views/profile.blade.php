@@ -22,18 +22,13 @@
                 </div>
               </div>
 
-            <div class="text-gray-900 font-bold text-sm mb-2">
-              <a class="text-blue-500 hover:text-blue-800" href="{{route('discussion', ['slug' => $d->slug ])}}">{{$d->title}}</a>
-              
-            </div>
+            <div class="text-gray-900 font-bold text-sm mb-2"><a class="text-blue-500 hover:text-blue-800" href="{{route('discussion', ['slug' => $d->slug ])}}">{{$d->title}}</a></div>
             <p class="text-gray-500 text-base">{!!str_limit(Markdown::convertToHtml($d->content), 220)!!}</p>
-            
           </div>
           <div class="flex items-center">
             <img class="w-10 h-10 rounded-full mr-4" src="{{asset ('images/users/'.$d->user->avatar) }}" alt="Avatar">
             <div class="text-sm">
-              {{-- <p class="text-gray-900 leading-none">{{$d->user->name}}</p> --}}
-              <a class="text-gray-900 leading-none" href="{{ url('profile',['name' => $d->user->name ?? '']) }}" target="_blank">{{$d->user->name}}</a>
+              <p class="text-gray-900 leading-none">{{$d->user->name}}</p>
               <p class="text-gray-600">{{$d->created_at->diffForHumans()}} &nbsp;|&nbsp; {{$d->created_at->format(' H:i')}}</p>
             </div>
           </div>

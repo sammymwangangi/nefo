@@ -13,6 +13,8 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $table = "users";
+    
     protected $fillable = [
         'name', 'email', 'password', 'avatar', 'provider', 'provider_id'
     ];
@@ -24,8 +26,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    public function discussions(){
-        
-        return $this->hasMany('App\Discussion');
+    public function discussions()
+    {
+        return $this->hasMany(Discussion::class);
     }
 }

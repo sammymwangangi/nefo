@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Discussion;
 use App\Channel;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Str;
 
 class ForumsController extends Controller
 {
@@ -62,4 +64,16 @@ class ForumsController extends Controller
 
     	return view('channel')->with('discussions', $channel->discussions()->paginate(5));
     }
+
+    public function profile(Request $request, $name)
+    {
+        $user = User::where('name', $name)->first();
+        $discussions = Discussion::where("user_id", "=", $user->id)->paginate(5);
+
+        return view('profile')->with(array("user" => $user, "discussions" => $discussions));
+    }
+    
 }
+
+// str_slug($title, $separator);
+// $title = str_slug("Laravel 5 Framework", "-");

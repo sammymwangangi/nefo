@@ -170,8 +170,8 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,
-        // AdamWathan\EloquentOAuthL5\EloquentOAuthServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        // ScoutEngines\Elasticsearch\ElasticsearchProvider::class,
 
 
         /*

@@ -8,7 +8,9 @@ use Laravel\Scout\Searchable;
 
 class Channel extends Model
 {
-	use Searchable;
+    use Searchable;
+
+    protected $table = "channels";
 	
     protected $fillable = ['title', 'slug'];
 

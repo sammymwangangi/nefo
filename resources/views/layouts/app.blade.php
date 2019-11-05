@@ -195,8 +195,42 @@
       </div>
     </div>
 
+
+<div class="bg-green-500 text-white p-8">
+  <div class="sm:flex mb-4">
+    <div class="sm:w-3/4 h-auto mr-2">
+        <div class="flex-1 flex justify-between items-center mb-2">
+          <a class="text-green-400" href="{{ url('/') }}">
+            <div class="flex items-center flex-shrink-0 text-white mr-6">
+              <svg class="fill-current h-8 w-8 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M6 14H4a2 2 0 0 1-2-2V4c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2v2h2a2 2 0 0 1 2 2v13a1 1 0 0 1-1.7.7L16.58 18H8a2 2 0 0 1-2-2v-2zm0-2V8c0-1.1.9-2 2-2h8V4H4v8h2zm14-4H8v8h9a1 1 0 0 1 .7.3l2.3 2.29V8z"/></svg>
+              <span class="font-semibold text-xl tracking-tight">NexForum</span>
+            </div>
+          </a>
+        </div>
+        <hr class="max-w-md mb-2">
+        
+        <p class="">
+            An application where developers interact,to ask questions,update others on upcoming technologies and solve problems together.Both for newbies and advanced developers.
+        </p>
+    </div>
+    <div class="sm:w-1/4 h-auto sm:mt-0 mt-8">
+        
+
+    </div>
+
+    <div class="sm:w-1/2 sm:mt-0 mt-8 h-auto">
+        <div class="text-red-light mb-2">Newsletter</div>
+        <p class="text-grey-darker leading-normal">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, consectetur. </p>
+        <div class="mt-4 flex">
+            <input type="text" class="p-2 border border-grey-light round text-grey-dark text-sm h-auto" placeholder="Your email address">
+            <button class="bg-orange text-white rounded-sm h-auto text-xs p-3">Subscribe</button>
+        </div>
+    </div>
+  </div>
+</div>
+
   <!-- Footer -->
-    <footer class="footer text-white" style="background-color: #17594a;">
+    {{-- <footer class="footer text-white" style="background-color: #17594a;">
 
       <!-- Social Icons -->
       <div class="bg-faded">
@@ -251,7 +285,7 @@
           </p>
       </div>
       <!-- Copyright -->
-    </footer>
+    </footer> --}}
   <!-- Footer -->
   
   {{-- SCRIPTS --}}

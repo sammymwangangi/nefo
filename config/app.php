@@ -171,6 +171,7 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         // ScoutEngines\Elasticsearch\ElasticsearchProvider::class,
 
 

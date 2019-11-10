@@ -19,7 +19,8 @@
         "laravel/scout": "^7.2",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "^1.0",
-        "laravelista/comments": "^3.1"
+        "laravelista/comments": "^3.1",
+        "tymon/jwt-auth": "1.0.*"
     },
     "require-dev": {
         "filp/whoops": "^2.0",

@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Session;
 use App\Channel;
+use App\Http\Resources\ChannelResource;
 class ChannelsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');
+        // $this->middleware('admin');
+        $this->middleware('auth:api')->except(['index', 'show']);
     }
     /**
      * Display a listing of the resource.
@@ -17,7 +19,8 @@ class ChannelsController extends Controller
      */
     public function index()
     {
-        return view('channels.index')->with('channels', Channel::all()); 
+        // return view('channels.index')->with('channels', Channel::all());
+        return ChannelResource::collection(Channel::all());
     }
     /**
      * Show the form for creating a new resource.

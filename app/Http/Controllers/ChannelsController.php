@@ -20,7 +20,8 @@ class ChannelsController extends Controller
     public function index()
     {
         // return view('channels.index')->with('channels', Channel::all());
-        return ChannelResource::collection(Channel::all());
+        // return ChannelResource::collection(Channel::all());
+        return ChannelResource::collection(Channel::paginate(10));
     }
     /**
      * Show the form for creating a new resource.

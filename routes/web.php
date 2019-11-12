@@ -31,6 +31,7 @@ Route::get('welcome', function () {
     return view('welcome');
 });
 
+
 Auth::routes();
 
 Route::get('/forum', [
@@ -84,8 +85,8 @@ Route::group(['middleware' => 'auth'], function(){
 	]);
 
 	Route::get('discussion/{slug}', [
-	'uses' => 'DiscussionsController@show',
-	'as' => 'discussion'
+		'uses' => 'DiscussionsController@show',
+		'as' => 'discussion'
 	]);
 
 	Route::get('/reply/like/{id}', [

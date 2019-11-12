@@ -4,7 +4,10 @@
             <div class="card">
                 
                 <div class="card-header">Edit Reply </div>
-                <p class="card-text"><a href="{{url('/discussion/'.$reply->discussion->slug)}}" class="btn btn-warning">
+                {{-- <p class="card-text"><a href="{{url('/discussion/'.$reply->discussion->slug)}}" class="btn btn-warning"> --}}
+                <p class="card-text">
+                    {{-- <a href="javascript:history.back()" class="btn btn-warning"> --}}
+                    <a href="{{ URL::previous() }}" class="btn btn-warning">
                     <i class="fas fa-arrow-left"></i> Go Back</a>
                 </p>
                 <div class="card-body">

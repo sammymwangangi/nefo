@@ -46,5 +46,11 @@
         <strong class="font-bold">Oops!</strong>
         <span class="block sm:inline">No Discussions Found.</span>
       </div>
+      <div class="bg-white text-center text-blue-500 px-4 py-3 rounded relative" role="alert">
+        <a href="{{ URL::previous() }}" class="block sm:inline">
+          <span><i class="far fa-arrow-alt-circle-left text-blue-600 pr-1"></i></span>
+          Go back
+        </a>
+      </div>
     @endif
 @endsection

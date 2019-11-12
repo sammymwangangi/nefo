@@ -4,7 +4,7 @@
     @if(count($discussions) > 0)
       @foreach($discussions as $d)
 
-      <div class="max-w-sm w-full max-w-full md:flex shadow-md rounded mb-5 text-xs">
+      <div class="sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-4xl md:flex shadow-md rounded mb-5">
         <div class="rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
           <div class="mb-8">
               <div class="flex-1 flex justify-between mb-4">
@@ -24,9 +24,10 @@
 
             <div class="text-gray-900 font-bold text-sm mb-2">
               <a class="text-blue-500 hover:text-blue-800" href="{{route('discussion', ['slug' => $d->slug ])}}">{{$d->title}}</a>
-              
             </div>
-            <p class="text-gray-500 text-base">{!!str_limit(Markdown::convertToHtml($d->content), 220)!!}</p>
+            <div class="text-gray-900 font-serif text-sm mb-2">
+              {!!str_limit(Markdown::convertToHtml($d->content), 220)!!}
+            </div>
             
           </div>
           <div class="flex items-center">
@@ -49,7 +50,13 @@
     @else
       <div class="bg-red-100 border text-center border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
         <strong class="font-bold">Oops!</strong>
-        <span class="block sm:inline">No Discussions Found.</span>
+        <span class="block sm:inline">No Discussions Found :(</span>
+      </div>
+      <div class="bg-white text-center text-blue-500 px-4 py-3 rounded relative" role="alert">
+        <a href="{{ URL::previous() }}" class="block sm:inline">
+          <span><i class="far fa-arrow-alt-circle-left text-blue-600 pr-1"></i></span>
+          Go back
+        </a>
       </div>
     @endif
 @endsection
